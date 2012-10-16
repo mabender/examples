@@ -1,0 +1,118 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function appendRow(after){
+var newrow = document.createElement("TR");
+var newcell = newrow.appendChild(document.createElement("TD"));
+newcell.setAttribute("colSpan", "7");
+newcell.innerHTML = "WHATEVER YOU WANT";
+try{
+after.parentNode.insertBefore(newrow,after.nextSib ling);
+}
+catch(e){
+after.parentNode.appendChild(newrow);
+}
+}
+
+function removeRow(thisRow){
+thisRow.parentNode.removeChild(thisRow.nextSibling ,true);
+}
+
+function toogle(evt){
+var evt = evt || window.event;
+var obj = evt.target || evt.srcElement;
+if (!obj.expanded){
+obj.firstChild.nodeValue = "Hide";
+appendRow(obj.parentNode);
+}
+else{
+obj.firstChild.nodeValue = "Show";
+removeRow(obj.parentNode);
+}
+obj.expanded = !obj.expanded;
+}
+
+function init(){
+var tds = document.getElementsByTagName("TD");
+for (var i=0; i<tds.length; i++){
+if (tds[i].className == "sh"){
+tds[i].expanded = false;
+if (tds[i].addEventListener)
+tds[i].addEventListener("click",toogle,false)
+else if (tds[i].attachEvent)
+tds[i].attachEvent("onclick",toogle);
+else tds[i].onclick = toogle;
+}
+}
+}
+</script>
+<style type="text/css">
+.sh{
+color:blue;
+cursorpointer;
+text-decoration:underline;
+}
+</style>
+</head>
+
+<body onload="init();">
+<table border=1>
+<thead>
+<tr>
+<th>Details</th>
+<th>Line</th>
+<th>Item Description</th>
+<th>Unit</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="6" align="right">Total</td>
+<td>1,200.00</td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="sh">Show</td>
+<td>1</td>
+<td>Some description</td>
+<td>134</td>
+<td>76</td>
+<td>100</td>
+<td>300</td>
+</tr>
+<tr>
+<td class="sh">Show</td>
+<td>2</td>
+<td>Some description</td>
+<td>12</td>
+<td>765</td>
+<td>100</td>
+<td>300</td>
+</tr>
+<tr>
+<td class="sh">Show</td>
+<td>3</td>
+<td>Some description</td>
+<td>32</td>
+<td>43</td>
+<td>100</td>
+<td>300</td>
+</tr>
+<tr>
+<td class="sh">Show</td>
+<td>4</td>
+<td>Some description</td>
+<td>34</td>
+<td>76</td>
+<td>100</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<HTML>
+<BODY>
+<H2>Using #exec cmd</H2>
+
+<p>
+If you see errors below, that means that insecure SSI commands have been
+disabled.  Go into the global server properties under the Advanced tab to change this.
+</p>
+
+<PRE>
+<!--#exec cmd="c:\httpd\cgi-bin\visitor.exe"-->
+</PRE>
+<H2>Using #exec cgi</H2>
+<PRE>
+<!--#exec cgi="/cgi-bin/visitor.exe"-->
+</PRE>
+<BODY>
+</HTML>

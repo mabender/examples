@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<TITLE>CGI and SSI Test</TITLE>
+</HEAD>
+
+<BODY>
+<H1>CGI and SSI Test</H1>
+
+<hr>
+<h2>Visitor Test</h2>
+You are Visitor # <img src="/cgi-bin/visitor.exe"><p>
+
+<hr>
+<h2>Server Side Includes</h2>
+If server side includes are enabled, you will see data values below:
+<p>
+The date is: <!--#echo var="DATE_LOCAL"--><br>
+The current version of the server is: <!--#echo var="SERVER_SOFTWARE"--><br>
+The CGI gateway version is: <!--#echo var="GATEWAY_INTERFACE"--><br>
+The server name is:  <!--#echo var="SERVER_NAME"--><br>
+This file is called: <!--#echo  var="DOCUMENT_NAME"--><br>
+This file's URI is: <!--#echo var= "DOCUMENT_URI"--><br>
+The query string is: <!--# echo var= "QUERY_STRING_UNESCAPED"--><br>
+This file was last modified:  <!--#echo var="LAST_MODIFIED" --><br>
+The size of the unprocessed file is <!--#fsize virtual="test.shtml"--><br>
+default.htm was last modified <!--#flastmod virtual="/default.htm"--><br>
+You are using <!--#echo var="HTTP_USER_AGENT"--><br>
+You came from <!--#echo var="HTTP_REFERER"--><p>
+
+<a href="ssiexec.shtml">Click here to test the #exec tag</a>
+
+<hr>
+<h2>Form for testing redirection script</h2>
+<FORM ACTION="/cgi-bin/redir.exe" METHOD="GET">
+<SELECT NAME="URL">
+<OPTION VALUE="http://www.omnicron.ab.ca/">Omnicron Technologies Home Page
+<OPTION VALUE="http://www.omnicron.ab.ca/httpd/">OmniHTTPd Home Page
+</SELECT>
+<BR>
+<INPUT TYPE="Submit" Value="Go!">
+</FORM>
+
+<hr>
+<h2>Standard CGI GET</h2>
+<FORM ACTION="/cgi-bin/test-cgi.exe" METHOD="GET">
+<pre>
+Data:  <INPUT NAME="Data" VALUE="" SIZE=60>
+</pre>
+<INPUT TYPE="Submit" Value="Submit Data">
+<INPUT TYPE="Reset" Value="Clear">
+</form>
+
+<hr>
+<h2>Standard CGI POST</h2>
+<FORM ACTION="/cgi-bin/test-cgi.exe" METHOD="POST">
+<pre>
+Data:  <INPUT NAME="Data" VALUE="" SIZE=60>
+</pre>
+<INPUT TYPE="Submit" Value="Submit Data">
+<INPUT TYPE="Reset" Value="Clear">
+</form>
+
+<hr>
+<h2>Windows CGI GET</h2>
+<FORM ACTION="/cgi-win/test-win.exe" METHOD="GET">
+<pre>
+Data:  <INPUT NAME="Data" VALUE="" SIZE=60>
+</pre>
+<INPUT TYPE="Submit" Value="Submit Data">
+<INPUT TYPE="Reset" Value="Clear">
+</form>
+
+<hr>
+<h2>Windows CGI POST</h2>
+<FORM ACTION="/cgi-win/test-win.exe" METHOD="POST">
+<pre>
+Data:  <INPUT NAME="Data" VALUE="" SIZE=60>
+</pre>
+<INPUT TYPE="Submit" Value="Submit Data">
+<INPUT TYPE="Reset" Value="Clear">
+</form>
+
+<hr>
+<h2>Perl GET</h2>
+A Perl interpreter must be properly installed for this to work:<br>
+<a href="/cgi-bin/minimal.pl">Click here to test</a>
+
+<hr>
+<h2>Perl POST</h2>
+A Perl interpreter must be properly installed for this to work:<br>
+<FORM ACTION="/cgi-bin/minimal.pl" METHOD="POST">
+<pre>
+Name:   <INPUT NAME="Name" VALUE="" SIZE=60>
+Email:  <INPUT NAME="Email" VALUE="" SIZE=60>
+Saying: <INPUT NAME="Saying" VALUE="" SIZE=80>
+</pre>
+<INPUT TYPE="Submit" Value="Submit Saying">
+<INPUT TYPE="Reset" Value="Clear">
+</form>
+
+<hr>
+</BODY>
+</HTML>
